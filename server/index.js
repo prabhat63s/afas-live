@@ -36,11 +36,12 @@ const PORT = process.env.PORT || 8080;
 //middelwares
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://afas-live.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(morgan("dev"));
 
