@@ -16,7 +16,7 @@ const CreateCrop = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/category/get-category"
+        "https://afas-live.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setCategories(data.category);
@@ -35,7 +35,7 @@ const CreateCrop = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/crops/create-crop",
+        "https://afas-live.onrender.com/api/v1/crops/create-crop",
         {
           name,
           category,

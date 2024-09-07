@@ -14,7 +14,7 @@ const SpeechRecognitionComponent = () => {
 
   const handleAddPost = async (transcript) => {
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/posts", {
+      const response = await axios.post("https://afas-live.onrender.com/api/v1/posts", {
         title: auth?.user?.name || "अपनी फसल अपनी सुरक्षा",
         content: transcript,
       });

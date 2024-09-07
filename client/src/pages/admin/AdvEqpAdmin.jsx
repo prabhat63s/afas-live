@@ -17,7 +17,7 @@ export default function AdvEqpAdmin() {
   const getAllAdvanceEqp = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/advanceEqp/get-advanceEqp"
+        "https://afas-live.onrender.com/api/v1/advanceEqp/get-advanceEqp"
       );
       const data = response.data;
 
@@ -43,7 +43,7 @@ export default function AdvEqpAdmin() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/advanceEqp/create-advanceEqp",
+        "https://afas-live.onrender.com/api/v1/advanceEqp/create-advanceEqp",
         { name, descriptions } // Send name and descriptions array to backend
       );
       if (data.success) {
@@ -64,7 +64,7 @@ export default function AdvEqpAdmin() {
   const handleDelete = async (aid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/advanceEqp/delete-advanceEqp/${aid}`
+        `https://afas-live.onrender.com/api/v1/advanceEqp/delete-advanceEqp/${aid}`
       );
       if (data.success) {
         toast.success(`stubble is deleted`);

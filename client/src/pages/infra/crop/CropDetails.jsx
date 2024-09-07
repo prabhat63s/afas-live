@@ -14,7 +14,7 @@ export default function CropDetails() {
     try {
       console.log(params.slug);
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/crops/get-crop/${params.slug}`
+        `https://afas-live.onrender.com/api/v1/crops/get-crop/${params.slug}`
       );
       if (data) {
         // toast.success("got the data");

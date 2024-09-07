@@ -16,7 +16,7 @@ const Crops = () => {
   const getAllCrops = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/crops/get-crop"
+        "https://afas-live.onrender.com/api/v1/crops/get-crop"
       );
       setCrops(data.getCrops);
     } catch (error) {

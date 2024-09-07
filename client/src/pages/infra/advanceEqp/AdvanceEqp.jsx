@@ -12,7 +12,7 @@ export default function AdvanceEqp() {
   const getAllAdvanceEqp = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/advanceEqp/get-advanceEqp"
+        "https://afas-live.onrender.com/api/v1/advanceEqp/get-advanceEqp"
       );
       const data = response.data;
 

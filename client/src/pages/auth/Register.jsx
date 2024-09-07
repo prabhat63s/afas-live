@@ -38,7 +38,7 @@ export default function Register() {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/sign-up",
+        "https://afas-live.onrender.com/api/v1/auth/sign-up",
         {
           name,
           email,

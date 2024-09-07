@@ -20,7 +20,7 @@ const Marquee = () => {
   const getAllNews = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/news/get-news"
+        "https://afas-live.onrender.com/api/v1/news/get-news"
       );
       if (data.success) {
         setNews(data.news);

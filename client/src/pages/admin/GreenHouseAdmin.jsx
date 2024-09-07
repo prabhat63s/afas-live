@@ -16,7 +16,7 @@ export default function GreenHouseAdmin() {
   const getAllGreenhouse = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/greenhouse/get-greenhouse"
+        "https://afas-live.onrender.com/api/v1/greenhouse/get-greenhouse"
       );
       const data = response.data;
       if (data && data.success) {
@@ -42,7 +42,7 @@ export default function GreenHouseAdmin() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/greenhouse/create-greenhouse",
+        "https://afas-live.onrender.com/api/v1/greenhouse/create-greenhouse",
         { name, descriptions } // Send name and descriptions array to backend
       );
       if (data.success) {
@@ -63,7 +63,7 @@ export default function GreenHouseAdmin() {
   const handleDelete = async (gid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/greenhouse/delete-greenhouse/${gid}`
+        `https://afas-live.onrender.com/api/v1/greenhouse/delete-greenhouse/${gid}`
       );
       if (data.success) {
         toast.success(`Greenhouse is deleted`);

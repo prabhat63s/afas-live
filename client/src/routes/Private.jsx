@@ -10,7 +10,7 @@ export default function Private() {
 
   useEffect(() => {
     const authCheck = async () => {
-      const res = await axios.get("http://localhost:8080/api/v1/auth/user-auth");
+      const res = await axios.get("https://afas-live.onrender.com/api/v1/auth/user-auth");
       if (res.data.ok) {
         setOk(true);
       } else {

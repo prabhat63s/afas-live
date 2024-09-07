@@ -39,7 +39,7 @@ export default function Login() {
       setError(""); // Clear the error state if no validation errors
 
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/sign-in",
+        "https://afas-live.onrender.com/api/v1/auth/sign-in",
         {
           email,
           password,

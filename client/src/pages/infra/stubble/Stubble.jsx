@@ -12,7 +12,7 @@ export default function Stubble() {
   const getAllStubble = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/stubble/get-stubble"
+        "https://afas-live.onrender.com/api/v1/stubble/get-stubble"
       );
       const data = response.data;
 

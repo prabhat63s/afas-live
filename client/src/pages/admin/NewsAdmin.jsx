@@ -17,7 +17,7 @@ export default function NewsAdmin() {
   const getAllNews = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/news/get-news"
+        "https://afas-live.onrender.com/api/v1/news/get-news"
       );
       if (data.success) {
         setNews(data.news);
@@ -39,7 +39,7 @@ export default function NewsAdmin() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/news/create-news",
+        "https://afas-live.onrender.com/api/v1/news/create-news",
         {
           name,
           pic,
@@ -64,7 +64,7 @@ export default function NewsAdmin() {
   const handleDelete = async (nid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/news/delete-news/${nid}`
+        `https://afas-live.onrender.com/api/v1/news/delete-news/${nid}`
       );
       if (data.success) {
         toast.success(data.message);

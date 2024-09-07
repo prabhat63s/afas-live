@@ -35,7 +35,7 @@ const EditPostForm = ({
   const handleUpdatePost = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/v1/posts/${postId}`,
+        `https://afas-live.onrender.com/api/v1/posts/${postId}`,
         {
           content,
         }

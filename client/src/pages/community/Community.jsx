@@ -16,7 +16,7 @@ export default function Community() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await axios.get("http://localhost:8080/api/v1/posts");
+        const response = await axios.get("https://afas-live.onrender.com/api/v1/posts");
         console.log(response.data);
         console.log(auth);
         setPosts(response.data);
@@ -29,7 +29,7 @@ export default function Community() {
 
   const handleDeletePost = async (postId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/v1/posts/${postId}`);
+      await axios.delete(`https://afas-live.onrender.com/api/v1/posts/${postId}`);
       const updatedPosts = posts.filter((post) => post._id !== postId);
       setPosts(updatedPosts);
     } catch (error) {
@@ -43,7 +43,7 @@ export default function Community() {
 
       // Send a POST request to like the post using Axios
       const updateLike = await axios.post(
-        `http://localhost:8080/api/v1/posts/${postId}/like`,
+        `https://afas-live.onrender.com/api/v1/posts/${postId}/like`,
         { email }
       );
       console.log(updateLike.data);
@@ -60,7 +60,7 @@ export default function Community() {
     try {
       // Send a POST request to dislike the post using Axios
       const updateDisLike = await axios.post(
-        `http://localhost:8080/api/v1/posts/${postId}/dislike`,
+        `https://afas-live.onrender.com/api/v1/posts/${postId}/dislike`,
         { email }
       );
 
@@ -77,11 +77,11 @@ export default function Community() {
   const handleAddComment = async (postId, text) => {
     try {
       await axios.post(
-        `http://localhost:8080/api/v1/posts/${postId}/comments`,
+        `https://afas-live.onrender.com/api/v1/posts/${postId}/comments`,
         { text, email }
       );
       const updatedPosts = await axios.get(
-        "http://localhost:8080/api/v1/posts"
+        "https://afas-live.onrender.com/api/v1/posts"
       );
       setPosts(updatedPosts.data);
       setCommentText("");
@@ -93,7 +93,7 @@ export default function Community() {
   const handleDeleteComment = async (postId, commentId) => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/v1/posts/${postId}/comments/${commentId}`,
+        `https://afas-live.onrender.com/api/v1/posts/${postId}/comments/${commentId}`,
         {
           data: {
             email,

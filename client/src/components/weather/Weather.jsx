@@ -43,8 +43,8 @@ const Weather = () => {
       }
 
       const response = await axios.get(
-        // `http://localhost:8080/weather?lat=${26.795083}&lon=${83.370833}`
-        `http://localhost:8080/weather?lat=${latitude}&lon=${longitude}`
+        // `https://afas-live.onrender.com/weather?lat=${26.795083}&lon=${83.370833}`
+        `https://afas-live.onrender.com/weather?lat=${latitude}&lon=${longitude}`
       );
 
       console.log(response.data);

@@ -16,7 +16,7 @@ export default function OrganicFertiAdmin() {
   const getAllOrganicFerti = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/organicFerti/get-organicFerti"
+        "https://afas-live.onrender.com/api/v1/organicFerti/get-organicFerti"
       );
       if (data.success) {
         setFertilizers(data.ferti);
@@ -39,7 +39,7 @@ export default function OrganicFertiAdmin() {
     e.preventDefault();
     try {
       var { data } = await axios.post(
-        "http://localhost:8080/api/v1/organicFerti/create-organicFerti",
+        "https://afas-live.onrender.com/api/v1/organicFerti/create-organicFerti",
         { name, description }
       );
       if (data.success) {
@@ -60,7 +60,7 @@ export default function OrganicFertiAdmin() {
   const handleDelete = async (fid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/organicFerti/delete-organicFerti/${fid}`
+        `https://afas-live.onrender.com/api/v1/organicFerti/delete-organicFerti/${fid}`
       );
       if (data.success) {
         toast.success(`organic ferti is deleted`);

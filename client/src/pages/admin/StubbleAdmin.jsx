@@ -16,7 +16,7 @@ export default function StubbleAdmin() {
   const getAllStubble = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/stubble/get-stubble"
+        "https://afas-live.onrender.com/api/v1/stubble/get-stubble"
       );
       const data = response.data;
       if (data && data.success) {
@@ -42,7 +42,7 @@ export default function StubbleAdmin() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/stubble/create-stubble",
+        "https://afas-live.onrender.com/api/v1/stubble/create-stubble",
         { name, descriptions } // Send name and descriptions array to backend
       );
       if (data.success) {
@@ -63,7 +63,7 @@ export default function StubbleAdmin() {
   const handleDelete = async (sid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/stubble/delete-stubble/${sid}`
+        `https://afas-live.onrender.com/api/v1/stubble/delete-stubble/${sid}`
       );
       if (data.success) {
         toast.success(`stubble is deleted`);

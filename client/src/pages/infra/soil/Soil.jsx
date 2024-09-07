@@ -13,7 +13,7 @@ export default function Soil() {
   const getAllSoil = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/soil/get-soil"
+        "https://afas-live.onrender.com/api/v1/soil/get-soil"
       );
       const data = response.data;
       if (data && data.success) {

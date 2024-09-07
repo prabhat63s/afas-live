@@ -6,7 +6,7 @@ import axios from "axios";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
-import CropsRoutes from "./routes/CropsRoutes.js";
+import cropsRoutes from "./routes/CropsRoutes.js";
 import newsRoute from "./routes/newsRoute.js";
 import organicFertiRoute from "./routes/organicFertiRoute.js";
 import greenhouseRoute from "./routes/greenhouseRoute.js";
@@ -48,7 +48,7 @@ app.use(morgan("dev"));
 //routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
-app.use("/api/v1/crops", CropsRoutes);
+app.use("/api/v1/crops", cropsRoutes);
 app.use("/api/v1/news", newsRoute);
 app.use("/api/v1/organicFerti", organicFertiRoute);
 app.use("/api/v1/greenhouse", greenhouseRoute);

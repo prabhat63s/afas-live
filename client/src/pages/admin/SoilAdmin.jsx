@@ -16,7 +16,7 @@ export default function SoilAdmin() {
   const getAllSoil = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/soil/get-soil"
+        "https://afas-live.onrender.com/api/v1/soil/get-soil"
       );
       const data = response.data;
       if (data && data.success) {
@@ -42,7 +42,7 @@ export default function SoilAdmin() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/soil/create-soil",
+        "https://afas-live.onrender.com/api/v1/soil/create-soil",
         { name, descriptions } // Send name and descriptions array to backend
       );
       if (data.success) {
@@ -63,7 +63,7 @@ export default function SoilAdmin() {
   const handleDelete = async (sid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/soil/delete-soil/${sid}`
+        `https://afas-live.onrender.com/api/v1/soil/delete-soil/${sid}`
       );
       if (data.success) {
         toast.success(`Soil is deleted`);

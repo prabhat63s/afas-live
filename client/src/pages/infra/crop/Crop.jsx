@@ -11,7 +11,7 @@ const Crop = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/category/get-category"
+        "https://afas-live.onrender.com/api/v1/category/get-category"
       );
       if (data.success) {
         // toast.success("got all the categories");
@@ -29,7 +29,7 @@ const Crop = () => {
   const getAllCrops = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/crops/get-crop"
+        "https://afas-live.onrender.com/api/v1/crops/get-crop"
       );
       if (data.success) {
         // toast.success(data.message);

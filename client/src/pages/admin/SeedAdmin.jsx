@@ -16,7 +16,7 @@ export default function SeedAdmin() {
   const getAllSeed = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/seed/get-seed"
+        "https://afas-live.onrender.com/api/v1/seed/get-seed"
       );
       const data = response.data;
       if (data && data.success) {
@@ -42,7 +42,7 @@ export default function SeedAdmin() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/seed/create-seed",
+        "https://afas-live.onrender.com/api/v1/seed/create-seed",
         { name, descriptions } // Send name and descriptions array to backend
       );
       if (data.success) {
@@ -63,7 +63,7 @@ export default function SeedAdmin() {
   const handleDelete = async (sid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/seed/delete-seed/${sid}`
+        `https://afas-live.onrender.com/api/v1/seed/delete-seed/${sid}`
       );
       if (data.success) {
         toast.success(`seed is deleted`);

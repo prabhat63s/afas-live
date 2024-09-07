@@ -13,7 +13,7 @@ export default function OrganicFertilizer() {
   const getAllOrganicFerti = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/organicFerti/get-organicFerti"
+        "https://afas-live.onrender.com/api/v1/organicFerti/get-organicFerti"
       );
       if (data && data.success) {
         setFertilizers(data.ferti); // Update state with fetched fertilizers

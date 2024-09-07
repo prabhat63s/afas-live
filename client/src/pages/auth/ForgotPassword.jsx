@@ -34,7 +34,7 @@ export default function ForgotPassword() {
         return;
       }
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/forgot-password",
+        "https://afas-live.onrender.com/api/v1/auth/forgot-password",
         {
           email,
           newPassword,

@@ -12,7 +12,7 @@ export default function Greenhouse() {
   const getAllGreenhouse = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/greenhouse/get-greenhouse"
+        "https://afas-live.onrender.com/api/v1/greenhouse/get-greenhouse"
       );
       const data = response.data; // Extract data from response
 
