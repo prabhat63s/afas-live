@@ -2,6 +2,7 @@ function CurrentWeather({ weatherData }) {
   // Define the condition translations in Hindi
   const conditionTranslations = {
     Sunny: "धूप",
+    Mist: "धुंध",
     Rain: "बारिश",
     Cloudy: "बादल",
     "Patchy rain nearby": "नजदीक हल्की बारिश",

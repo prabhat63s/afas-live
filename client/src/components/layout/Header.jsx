@@ -7,8 +7,8 @@ import { RiCloseLine, RiHomeLine } from "react-icons/ri";
 import { HiBars2, HiOutlineShoppingBag } from "react-icons/hi2";
 import { FiLogOut } from "react-icons/fi";
 import { GoPerson } from "react-icons/go";
-import { TbMessageCircle } from "react-icons/tb";
-import { MdOutlineRoundaboutRight } from "react-icons/md";
+import { TbMessageCircle, TbBrandMailgun } from "react-icons/tb";
+import { MdOutlineRoundaboutRight, MdOutlineDashboardCustomize } from "react-icons/md";
 
 const navigations = [
   {
@@ -24,7 +24,7 @@ const navigations = [
   {
     title: "संपर्क करें",
     link: "/contact",
-    icon: <TbMessageCircle size={24} />,
+    icon: <TbBrandMailgun size={24} />,
   },
   {
     title: "दुकान",
@@ -52,7 +52,7 @@ function Header() {
     <>
       <div className="w-full bg-emerald-500">
         <div className="lg:max-w-7xl mx-auto h-12 flex justify-end gap-6 px-4 items-center text-white">
-        <div id="google_translate_element" className="translate "></div>
+          <div id="google_translate_element" className="translate "></div>
           {auth?.user ? (
             <>
               <button className="flex relative group" onClick={handleLogout}>
@@ -158,7 +158,15 @@ function Header() {
                       }
                       onClick={toggleNav}
                     >
-                      {auth?.user?.role === 1 ? "डैशबोर्ड" : "परामर्श"}
+                      {auth?.user?.role === 1 ? (
+                        <span className="flex gap-4">
+                          <MdOutlineDashboardCustomize size={24} /> डैशबोर्ड
+                        </span>
+                      ) : (
+                        <span className="flex gap-4">
+                          <TbMessageCircle size={24} /> परामर्श
+                        </span>
+                      )}
                     </NavLink>
                     <button
                       onClick={handleLogout}

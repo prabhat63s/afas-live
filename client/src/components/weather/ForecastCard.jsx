@@ -9,6 +9,7 @@ function ForecastCard({ date, tempMin, tempMax, condition, astro }) {
 
   const conditionTranslations = {
     Sunny: "धूप",
+    Mist: "धुंध",
     Rain: "बारिश",
     Cloudy: "बादल",
     "Patchy rain nearby": "नजदीक हल्की बारिश",
