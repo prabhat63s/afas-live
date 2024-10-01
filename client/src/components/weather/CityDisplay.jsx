@@ -230,6 +230,7 @@ function CityDisplay({ city, region, condition }) {
 
   const conditionTranslations = {
     Sunny: "धूप",
+    Mist: "धुंध",
     Rain: "बारिश",
     Cloudy: "बादल",
     "Patchy rain nearby": "नजदीक हल्की बारिश",
