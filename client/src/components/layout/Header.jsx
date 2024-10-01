@@ -1,132 +1,189 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { HiMiniBars2 } from "react-icons/hi2";
-import { links } from "../../data/Data";
 import logo from "../../assets/favicon.png";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
-import { MdClose } from "react-icons/md";
+import { RiCloseLine, RiHomeLine } from "react-icons/ri";
+import { HiBars2, HiOutlineShoppingBag } from "react-icons/hi2";
+import { FiLogOut } from "react-icons/fi";
+import { GoPerson } from "react-icons/go";
+import { TbMessageCircle } from "react-icons/tb";
+import { MdOutlineRoundaboutRight } from "react-icons/md";
+
+const navigations = [
+  {
+    title: "होम",
+    link: "/",
+    icon: <RiHomeLine size={24} />,
+  },
+  {
+    title: "बारे में",
+    link: "/about",
+    icon: <MdOutlineRoundaboutRight size={24} />,
+  },
+  {
+    title: "संपर्क करें",
+    link: "/contact",
+    icon: <TbMessageCircle size={24} />,
+  },
+  {
+    title: "दुकान",
+    link: "https://dukaan-online-shopping-site.onrender.com",
+    icon: <HiOutlineShoppingBag size={24} />,
+  },
+];
 
 function Header() {
-  const [nav, setNav] = useState(false);
   const [auth, setAuth] = useAuth();
-  // console.log(auth?.user?.role === 1);
-  // console.log(auth?.user?.name);
-  //handle logout
+  const [navOpen, setNavOpen] = useState(false);
+
+  // Handle logout
   const handleLogout = () => {
-    setAuth({
-      ...auth,
-      user: null,
-      token: "",
-    });
+    setAuth({ ...auth, user: null, token: "" });
     localStorage.removeItem("auth");
     toast.success("Logout successfully");
     window.location = "/";
   };
 
+  // Toggle mobile navigation
+  const toggleNav = () => setNavOpen(!navOpen);
+
   return (
     <>
-      <div className="w-full bg-emerald-500 h-12 flex justify-end gap-6 px-6 lg:px-20 items-center text-white">
+      <div className="w-full bg-emerald-500">
+        <div className="lg:max-w-7xl mx-auto h-12 flex justify-end gap-6 px-4 items-center text-white">
         <div id="google_translate_element" className="translate "></div>
-
-        {!auth?.user ? (
-          <>
-            <NavLink
-              to={"/sign-in"}
-              className="py-1.5 rounded-md cursor-pointer
-             hover:text-gray-200 hover:scale-105 duration-200 "
-            >
-              साइन इन
-            </NavLink>
-          </>
-        ) : (
-          <>
-            <button
-              className="py-1.5 rounded-md cursor-pointer
-             hover:text-gray-200 hover:scale-105 duration-200 "
-              onClick={handleLogout}
-            >
-              लॉग आउट
-            </button>
-            {auth?.user ? (
+          {auth?.user ? (
+            <>
+              <button className="flex relative group" onClick={handleLogout}>
+                लॉग आउट
+                <span className="absolute left-0 right-0 bottom-0 h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100"></span>
+              </button>
               <NavLink
                 to={`/dashboard/${
                   auth?.user?.role === 1 ? "admin" : "community"
                 }`}
-                onClick={() => setNav(!nav)}
-                className="py-1.5 rounded-md cursor-pointer
-             hover:text-gray-200 hover:scale-105 duration-200"
+                className="flex relative group"
               >
                 {auth?.user?.role === 1 ? "डैशबोर्ड" : "परामर्श"}
+                <span className="absolute left-0 right-0 bottom-0 h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100"></span>
               </NavLink>
-            ) : (
-              <></>
-            )}
-          </>
-        )}
-      </div>
-      <header className="w-full mx-auto px-5 border-b lg:px-20 h-20 bg-white flex justify-between items-center">
-        {/* desktop  */}
-        <NavLink to="/">
-          <div className="flex items-center space-x-2">
-            <img className="h-12 w-12" src={logo} alt="Your Company" />
-            <h1 className="font-extrabold font-serif flex flex-col text-xl">
-              अपनी फसल{" "}
-              <span className=" text-emerald-500 ml-6 -mt-1.5">
-                अपनी सुरक्षा
-              </span>
-            </h1>
-          </div>
-        </NavLink>
-        <div className=" items-center hidden gap-8 md:flex">
-          {links.map(({ link, id, title, target }) => (
-            <NavLink
-              to={link}
-              key={id}
-              target={target}
-              className="py-1.5 rounded-md cursor-pointer
-             hover:text-gray-600 hover:scale-105 duration-200 "
-            >
-              {title}
+            </>
+          ) : (
+            <NavLink to="/sign-in" className="flex relative group">
+              <span>साइन इन</span>
+              <span className="absolute left-0 right-0 bottom-0 h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100"></span>
             </NavLink>
-          ))}
+          )}
         </div>
+      </div>
 
-        {/* mobile  */}
-        <div
-          onClick={() => {
-            setNav(!nav);
-          }}
-          className="cursor-pointer border border-emerald-500 shadow-sm rounded-md py-1  px-2 text-emerald-500 hover:text-black block md:hidden"
-        >
-          {nav ? "" : <HiMiniBars2 size={28} />}
-
-          {nav && (
-            <div
-              className={
-                nav
-                  ? "fixed flex flex-col py-12 gap-6 top-0 right-0 w-[80%] h-full bg-white text-emerald-500 z-10 ease-in-out duration-600"
-                  : "ease-in-out duration-600 fixed left-0 "
-              }
-            >
-              {links.map(({ icon, link, title, index }) => (
-                <NavLink
-                  key={index}
-                  onClick={() => setNav(!nav)}
-                  to={link}
-                  smooth
-                  duration={600}
-                  className="flex items-center mx-5 p-3 border rounded-md font-medium shadow-sm bg-gray-50 gap-4 text-black hover:text-emerald-500"
-                >
-                  <span className="pl-4 text-emerald-500">{icon}</span>
-                  {title}
-                </NavLink>
-              ))}
-              <div className="flex items-center mx-5 p-3 border rounded-md font-medium shadow-sm bg-gray-50 gap-4 text-black hover:text-emerald-500">
-                <span className="pl-4 text-emerald-500">
-                  <MdClose size={24} />
+      <header className="w-full border-b">
+        <div className="lg:max-w-7xl h-[10vh] mx-auto px-4 flex justify-between items-center">
+          {/* Logo */}
+          <NavLink to="/" className="flex items-center gap-1">
+            <div className="flex items-center space-x-2">
+              <img className="h-12 w-12" src={logo} alt="Your Company" />
+              <h1 className="font-extrabold font-serif flex flex-col text-xl">
+                अपनी फसल{" "}
+                <span className=" text-emerald-500 ml-6 -mt-1.5">
+                  अपनी सुरक्षा
                 </span>
-                बंद करे
+              </h1>
+            </div>
+          </NavLink>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-6">
+            {navigations.map((nav, index) => (
+              <NavLink key={index} to={nav.link} className="btn relative group">
+                {nav.title}
+                <span className="absolute left-0 right-0 bottom-0 h-[1px] bg-emerald-600 transform scale-x-0 group-hover:scale-x-100"></span>
+              </NavLink>
+            ))}
+          </div>
+
+          {/* Mobile Navigation Toggle */}
+          <div className="flex lg:hidden items-center gap-4">
+            {!navOpen ? (
+              <HiBars2
+                className="cursor-pointer text-emerald-600"
+                size={30}
+                onClick={toggleNav}
+              />
+            ) : (
+              <RiCloseLine
+                className="cursor-pointer text-emerald-600"
+                size={30}
+                onClick={toggleNav}
+              />
+            )}
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          {navOpen && (
+            <div className="absolute z-50 top-32 right-0 w-full bg-white text-black border-b p-5">
+              <div className="flex flex-col gap-2">
+                {navigations.map((nav, index) => (
+                  <NavLink
+                    key={index}
+                    to={nav.link}
+                    className={({ isActive }) =>
+                      `px-4 py-3 flex items-center gap-4 transition-colors duration-200 ${
+                        isActive
+                          ? "bg-emerald-600 text-white rounded-lg"
+                          : "bg-white text-black hover:bg-emerald-600 hover:text-white rounded-lg "
+                      }`
+                    }
+                  >
+                    {nav.icon}
+                    {nav.title}
+                  </NavLink>
+                ))}
+
+                {auth?.user ? (
+                  <>
+                    <NavLink
+                      to={
+                        auth.user.role === 1
+                          ? "/dashboard/admin"
+                          : "/dashboard/user"
+                      }
+                      className={({ isActive }) =>
+                        `p-4 transition-colors duration-200 ${
+                          isActive
+                            ? "bg-emerald-600 text-white rounded-lg"
+                            : "hover:bg-emerald-600 hover:text-white rounded-lg"
+                        }`
+                      }
+                      onClick={toggleNav}
+                    >
+                      {auth?.user?.role === 1 ? "डैशबोर्ड" : "परामर्श"}
+                    </NavLink>
+                    <button
+                      onClick={handleLogout}
+                      className="p-4 flex items-center hover:bg-emerald-600 hover:text-white rounded-lg"
+                    >
+                      <FiLogOut size={24} />
+                      <span>लॉग आउट</span>
+                    </button>
+                  </>
+                ) : (
+                  <NavLink
+                    to="/sign-in"
+                    className={({ isActive }) =>
+                      `p-4 flex items-center gap-4 transition-colors duration-200 ${
+                        isActive
+                          ? "bg-emerald-600 text-white rounded-lg"
+                          : "hover:bg-emerald-600 hover:text-white rounded-lg"
+                      }`
+                    }
+                    onClick={toggleNav}
+                  >
+                    <GoPerson size={24} />
+                    <span>साइन इन</span>
+                  </NavLink>
+                )}
               </div>
             </div>
           )}

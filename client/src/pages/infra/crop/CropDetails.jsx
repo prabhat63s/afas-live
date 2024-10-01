@@ -9,7 +9,7 @@ export default function CropDetails() {
   const [features, setFeatures] = useState([]);
   const [name, setName] = useState("");
   const params = useParams();
-  
+
   const getTheCrop = async () => {
     try {
       console.log(params.slug);
@@ -36,20 +36,26 @@ export default function CropDetails() {
   return (
     <Layout>
       <div className="w-[100%]">
-        <div className="w-[90%] my-10 mx-auto">
-          <h1 className="text-2xl w-fit font-bold mb-6 border-b-4">
-            <span className="text-emerald-500">{name}</span> को कैसे उगायें
-          </h1>
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
+          <div className="pb-6 mb-10 border-b">
+            <h1 className="text-2xl font-semibold mb-2">
+              <span className="text-emerald-500">{name}</span> को कैसे उगायें
+            </h1>
+            <span className="">
+              <Link to="/">होम / </Link>
+              <Link to="/crop">फसल</Link>
+            </span>
+          </div>
 
           <div className="flex flex-col">
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-3">
               {features.map((feature, i) => (
                 <div
                   key={i}
-                  className="flex border rounded-md p-5 bg-gray-50 hover:shadow-md flex-col leading-7"
+                  className="flex rounded-xl p-5 hover:bg-emerald-50 bg-gray-50 flex-col leading-7"
                 >
                   <dt className="inline text-emerald-500 font-medium">
-                    {feature.title} :
+                  {i + 1}.  {feature.title}:
                   </dt>{" "}
                   <dd className="inline">{feature.content}</dd>
                 </div>
@@ -59,7 +65,7 @@ export default function CropDetails() {
               <Link
                 to="https://www.commodityinsightsx.com/commodities/cereals"
                 target="_blank"
-                className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm shadow-md font-semibold text-white hover:bg-emerald-400"
+                className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-400"
               >
                 विक्रय मूल्य देखें
               </Link>

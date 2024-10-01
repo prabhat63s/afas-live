@@ -36,12 +36,12 @@ export default function AdvanceEqp() {
   return (
     <Layout>
       <div className="w-full">
-        <div className="w-11/12 my-10 mx-auto">
-          <h1 className="text-2xl w-fit text-emerald-500 font-bold mb-6 border-b-4">
-            उन्नत कृषि उपकरण
-          </h1>
-
-          <div className="flex flex-col gap-4">
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
+          <div className="pb-6 mb-10 border-b">
+            <h1 className="text-2xl text-emerald-500 font-semibold mb-2">
+              {" "}
+              उन्नत कृषि उपकरण
+            </h1>
             <p className="flex items-start justify-start ">
               उन्नत कृषि उपकरणों और प्रौद्योगिकी ने कृषि उद्योग में क्रांति ला
               दी है, दक्षता, उत्पादकता और स्थिरता में सुधार किया है। ये उपकरण और
@@ -50,15 +50,19 @@ export default function AdvanceEqp() {
               लेने में मदद करती हैं। यहां कुछ उन्नत कृषि उपकरण और
               प्रौद्योगिकियां दी गई हैं|
             </p>
+          </div>
 
+          <div className="flex flex-col gap-4">
             {loading ? (
-              <p><Spinner /></p>
+              <p>
+                <Spinner />
+              </p>
             ) : advanceEqp.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 {advanceEqp.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-gray-50 p-5 rounded-md hover:shadow-md"
+                    className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50"
                   >
                     <span className="font-medium text-lg text-emerald-500">
                       {index + 1}. {item.name}:
@@ -84,17 +88,20 @@ export default function AdvanceEqp() {
           <div className="flex flex-col md:flex-row gap-4 mt-6">
             <Link
               to="http://localhost:3000/"
-              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
+              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
             >
               खरीदने के लिए इस लिंक पर जाएं
             </Link>
             <Link
               to="/contact"
-              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
+              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
             >
               किराए पर लेंने के लिए हमसे संपर्क करें
             </Link>
-            <Link to='/contact' className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400">
+            <Link
+              to="/contact"
+              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
+            >
               जानें इसका उपयोग कैसे करें
             </Link>
           </div>

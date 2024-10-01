@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import AdminMenu from "../../components/AdminMenu";
 import { MdOutlineDelete } from "react-icons/md";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
+import AdminLayout from "./AdminLayout";
 
 export default function OrganicFertiAdmin() {
   const [fertilizers, setFertilizers] = useState([]);
@@ -75,97 +75,87 @@ export default function OrganicFertiAdmin() {
   };
 
   return (
-    <>
-      <div className="w-[100%] flex flex-col gap-6 lg:flex-row p-5 lg:px-10 h-screen">
-        <div className="lg:w-1/6 w-full">
-          <AdminMenu />
+    <AdminLayout>
+      <div className="w-full flex flex-col h-full overflow-auto">
+        <h1 className="text-2xl font-semibold">जैविक खाद बनाने का चरण</h1>
+        {/* form */}
+        <div className="flex flex-col space-y-2">
+          <form className="mt-4 flex flex-col gap-4">
+            <input
+              type="text"
+              className="block w-full rounded-md border py-3 px-2 text-[14px] text-gray-900 shadow-sm placeholder:text-gray-400 "
+              placeholder="चरण दर्ज करें"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <textarea
+              name=""
+              id=""
+              rows="6"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="विवरण"
+              className="block w-full rounded-md border py-3 px-2 text-[14px] text-gray-900 shadow-sm placeholder:text-gray-400 resize-none"
+            ></textarea>
+
+            <button
+              className="flex w-fit justify-center rounded-md bg-emerald-500 py-3 lg:py-2 px-2  font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 "
+              onClick={handleSubmit}
+            >
+              जोड़ें
+            </button>
+          </form>
         </div>
-        <div className="w-full flex flex-col h-full overflow-auto lg:w-5/6">
-          <div className="flex gap-3 items-center">
-            <Link to="/dashboard/admin">
-              <IoMdArrowRoundBack size={22} />
-            </Link>
-            <h2 className="text-xl text-emerald-500 font-bold border-b-4 w-fit">
-            जैविक खाद बनाने का चरण
-            </h2>
-          </div>
-          {/* form */}
-          <div className="flex flex-col space-y-2">
-            <form className="mt-4 flex flex-col gap-4">
-              <input
-                type="text"
-                className="block w-full rounded-md border py-3 px-2 text-[14px] text-gray-900 shadow-sm placeholder:text-gray-400 "
-                placeholder="चरण दर्ज करें"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <textarea
-                name=""
-                id=""
-                rows="6"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="विवरण"
-                className="block w-full rounded-md border py-3 px-2 text-[14px] text-gray-900 shadow-sm placeholder:text-gray-400 resize-none"
-              ></textarea>
 
-              <button
-                className="flex w-fit justify-center rounded-md bg-emerald-500 py-3 lg:py-2 px-2  font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 "
-                onClick={handleSubmit}
-              >
-                जोड़ें
-              </button>
-            </form>
-          </div>
-
-          {/* show steps */}
-          <div className="overflow-x-auto mt-5  rounded-md border">
-            <table className="min-w-full divide-y">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-sm font-medium">
-                    Steps
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-medium">
-                    Description
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-medium">
-                    Actions
-                  </th>
+        {/* show steps */}
+        <div className="overflow-x-auto my-5 rounded-md border">
+          <table className="min-w-full divide-y">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-sm font-medium">
+                  प्रक्रिया
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium">
+                  विवरण
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium">
+                  कार्रवाई
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y ">
+              {fertilizers.map((f) => (
+                <tr key={f._id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium">{f.name}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm w-96 truncate font-medium">
+                      {f.description}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <div className="flex items-center gap-4">
+                      <button
+                        onClick={() => {
+                          if (window.confirm("Are you sure to delete?")) {
+                            handleDelete(f._id);
+                          }
+                        }}
+                      >
+                        <MdOutlineDelete
+                          size={20}
+                          className="text-red-500 cursor-pointer"
+                        />
+                      </button>
+                    </div>
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="divide-y ">
-                {fertilizers.map((f) => (
-                  <tr key={f._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium">{f.name}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium">{f.description}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <div className="flex items-center gap-4">
-                        <button
-                          onClick={() => {
-                            if (window.confirm("Are you sure to delete?")) {
-                              handleDelete(f._id);
-                            }
-                          }}
-                        >
-                          <MdOutlineDelete
-                            size={20}
-                            className="text-red-500 cursor-pointer"
-                          />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-    </>
+    </AdminLayout>
   );
 }

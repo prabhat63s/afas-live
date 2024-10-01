@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import AdminMenu from "../../../components/AdminMenu";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import AdminLayout from "../AdminLayout";
 
 const CreateCrop = () => {
   const [categories, setCategories] = useState([]);
@@ -72,87 +72,79 @@ const CreateCrop = () => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-6 lg:flex-row p-5 lg:px-10 h-screen">
-      <div className="lg:w-1/6 w-full">
-        <AdminMenu />
-      </div>
-      <div className="w-full lg:w-5/6 lg:h-[100%] overflow-auto">
-        <div className="flex gap-3 items-center">
-          <Link to="/dashboard/admin">
-            <IoMdArrowRoundBack size={22} />
-          </Link>
-          <h2 className="text-xl text-emerald-500 font-bold border-b-4 w-fit">
-            फसल जोड़ें
-          </h2>
-        </div>
-        <div className="mt-4">
-          <select
-            name="category"
-            className="block w-full rounded-md border p-2 text-gray-900 shadow-sm placeholder:text-gray-400"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option>-- श्रेणी चुनना --</option>
-            {categories.map((cat) => (
-              <option key={cat._id} value={cat._id}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
-          <div className="my-3">
-            <input
-              type="text"
-              value={name}
-              placeholder="फसल का नाम दर्ज करें"
+    <AdminLayout>
+      <div className="w-full flex flex-col gap-6 lg:flex-row">
+        <div className="w-full overflow-auto">
+          <h2 className="text-2xl font-semibold">फसल जोड़ें</h2>
+          <div className="mt-4">
+            <select
+              name="category"
               className="block w-full rounded-md border p-2 text-gray-900 shadow-sm placeholder:text-gray-400"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div>
-            <button
-              onClick={handleAddDescription}
-              className="flex justify-center rounded-md bg-emerald-500 py-3 px-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
             >
-              विवरण जोड़ें
-            </button>
-            {description.map((desc, i) => (
-              <div key={i} className="flex flex-col space-y-4 mt-4">
-                <input
-                  name="title"
-                  value={desc.title}
-                  placeholder="शीर्षक"
-                  className="block w-full rounded-md border py-3 px-2 text-gray-900 shadow-sm placeholder:text-gray-400"
-                  onChange={(e) => handleInputChange(e, i)}
-                />
-                <div className="flex items-center gap-2">
-                  <textarea
-                    name="content"
-                    value={desc.content}
-                    placeholder="विवरण"
+              <option>-- श्रेणी चुनना --</option>
+              {categories.map((cat) => (
+                <option key={cat._id} value={cat._id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+            <div className="my-3">
+              <input
+                type="text"
+                value={name}
+                placeholder="फसल का नाम दर्ज करें"
+                className="block w-full rounded-md border p-2 text-gray-900 shadow-sm placeholder:text-gray-400"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <button
+                onClick={handleAddDescription}
+                className="flex justify-center rounded-md bg-emerald-500 py-3 px-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
+              >
+                विवरण जोड़ें
+              </button>
+              {description.map((desc, i) => (
+                <div key={i} className="flex flex-col space-y-4 mt-4">
+                  <input
+                    name="title"
+                    value={desc.title}
+                    placeholder="शीर्षक"
                     className="block w-full rounded-md border py-3 px-2 text-gray-900 shadow-sm placeholder:text-gray-400"
                     onChange={(e) => handleInputChange(e, i)}
                   />
-                  <button
-                    onClick={() => handleDeleteDescription(i)}
-                    className="flex w-fit justify-center rounded-md bg-emerald-500 py-3 px-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
-                  >
-                    हटाएँ
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <textarea
+                      name="content"
+                      value={desc.content}
+                      placeholder="विवरण"
+                      className="block w-full rounded-md border py-3 px-2 text-gray-900 shadow-sm placeholder:text-gray-400"
+                      onChange={(e) => handleInputChange(e, i)}
+                    />
+                    <button
+                      onClick={() => handleDeleteDescription(i)}
+                      className="flex w-fit justify-center rounded-md bg-emerald-500 py-3 px-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
+                    >
+                      हटाएँ
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-3">
-            <button
-              onClick={handleCreate}
-              className="flex justify-center rounded-md bg-emerald-500 py-3 px-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
-            >
-              फसल बनाएं
-            </button>
+              ))}
+            </div>
+            <div className="mt-3">
+              <button
+                onClick={handleCreate}
+                className="flex justify-center rounded-md bg-emerald-500 py-3 px-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
+              >
+                फसल बनाएं
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import AdminMenu from "../../../components/AdminMenu";
-import { IoMdArrowRoundBack } from "react-icons/io";
 import { BsPencil } from "react-icons/bs";
+import AdminLayout from "../AdminLayout";
 
 const Crops = () => {
   const [crops, setCrops] = useState([]);
@@ -26,23 +25,12 @@ const Crops = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 lg:flex-row p-5 lg:px-10 h-screen">
-      <div className="lg:w-1/6 w-full">
-        <AdminMenu />
-      </div>
-      <div className="w-full lg:h-full overflow-auto lg:w-5/6">
-        <div className="flex items-center gap-3">
-          <Link to="/dashboard/admin">
-            <IoMdArrowRoundBack size={22} />
-          </Link>
-          <h2 className="text-xl text-emerald-500 font-bold border-b-4">
-            सभी फसलें
-          </h2>
-        </div>
-
-        <div className="overflow-x-auto mt-5  rounded-md border">
-          <table className="min-w-full divide-y">
-            <thead className="bg-gray-50">
+    <AdminLayout>
+      <div>
+        <h1 className="text-2xl font-semibold mb-6">सभी फसलें</h1>
+        <div className="overflow-x-auto">
+          <table className="w-full divide-y divide-gray-200">
+            <thead className="bg-white">
               <tr>
                 <th className="px-6 py-3 text-left text-sm font-medium">फसल</th>
                 <th className="px-6 py-3 text-left text-sm font-medium">
@@ -56,7 +44,7 @@ const Crops = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y">
+            <tbody className="bg-white divide-y divide-gray-200">
               {crops.map((c) => (
                 <tr key={c._id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -76,7 +64,7 @@ const Crops = () => {
                     {c.description.map((desc, index) => (
                       <div
                         key={index}
-                        className=" leading-7 text-sm font-medium"
+                        className="leading-7 truncate w-96 text-sm font-medium"
                       >
                         {desc.content}
                       </div>
@@ -98,7 +86,7 @@ const Crops = () => {
           </table>
         </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 

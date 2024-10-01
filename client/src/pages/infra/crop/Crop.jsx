@@ -157,146 +157,136 @@ const Crop = () => {
   return (
     <Layout>
       <div className="w-[100%]">
-        <div className="w-[90%] my-10 mx-auto">
-          <h1 className="text-2xl w-fit text-emerald-500 font-bold mb-6 border-b-4">
-            फसल उत्पादन
-          </h1>
-
-          <div className="text-[14px] md:text-[16px] leading-6">
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
+          <div className="pb-6 mb-10 border-b">
+            <h1 className="text-2xl font-semibold mb-2">
+              <span className="text-emerald-500">फसल उत्पादन</span>
+            </h1>
             <p className="flex">
               भारत में तीन प्राथमिक कृषि मौसमों का अनुभव होता है विभिन्न मौसम
               स्थितियों की विशेषता और के लिए उपयुक्त विशिष्ट फसलों की खेती. ये
               ऋतुएँ हैं:
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-5">
-              <div className="p-5 rounded-md bg-gray-50 hover:shadow-md">
-                <h1 className="text-xl font-semibold text-emerald-500 border-b pb-2">
-                  खरीफ फसल
-                </h1>
-                <div className="mt-2  md:min-h-[260px]">
-                  {khrif.map((feature) => (
-                    <div
-                      key={feature.name}
-                      className="relative text-[14px] md:text-[16px] leading-7"
-                    >
-                      <dt className="inline text-emerald-500 font-medium">
-                        {feature.name} :
-                      </dt>{" "}
-                      <dd className="inline">{feature.description}</dd>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-2 mt-6">
-                  <Link
-                    to="https://www.commodityinsightsx.com/commodities/cereals"
-                    target="_blank"
-                    className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-5">
+            <div className="p-5 rounded-xl hover:bg-emerald-50 bg-gray-50">
+              <h1 className="text-xl font-semibold text-emerald-500 border-b pb-2">
+                खरीफ फसल
+              </h1>
+              <div className="mt-2  md:min-h-[260px]">
+                {khrif.map((feature) => (
+                  <div
+                    key={feature.name}
+                    className="relative text-[14px] md:text-[16px] leading-7"
                   >
-                    विक्रय मूल्य देखें
-                  </Link>
-                  <Link
-                    to="/contact"
-                    className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
-                  >
-                    खरीदने या बेचने के लिए हमसे संपर्क करें
-                  </Link>
-                  <p className="text-[12px] justify-end -mt-2">
-                    *आपको Commodity Insights पर मूल्य सूचना के लिए भेज रहा हूं
-                  </p>
-                </div>
+                    <dt className="inline text-emerald-500 font-medium">
+                      {feature.name} :
+                    </dt>{" "}
+                    <dd className="inline">{feature.description}</dd>
+                  </div>
+                ))}
               </div>
-              <div className="p-5 rounded-md bg-gray-50 hover:shadow-md">
-                <h1 className="text-xl font-semibold text-emerald-500 border-b pb-2">
-                  रबी फसल
-                </h1>
-                <div className="mt-2  md:min-h-[260px]">
-                  {rabi.map((feature) => (
-                    <div
-                      key={feature.name}
-                      className="relative text-[14px] md:text-[16px] leading-7"
-                    >
-                      <dt className="inline text-emerald-500 font-medium">
-                        {feature.name} :
-                      </dt>{" "}
-                      <dd className="inline">{feature.description}</dd>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-2 mt-6">
-                  <Link
-                    to="https://www.commodityinsightsx.com/commodities/cereals"
-                    target="_blank"
-                    className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
-                  >
-                    विक्रय मूल्य देखें
-                  </Link>
-                  <Link
-                    to="/contact"
-                    className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
-                  >
-                    खरीदने या बेचने के लिए हमसे संपर्क करें
-                  </Link>
-                  <p className="text-[12px] justify-end -mt-2">
-                    *आपको Commodity Insights पर मूल्य सूचना के लिए भेज रहा हूं
-                  </p>
-                </div>
-              </div>
-              <div className="p-5 rounded-md bg-gray-50 hover:shadow-md">
-                <h1 className="text-xl font-semibold text-emerald-500 border-b pb-2">
-                  ज़ैद फसल
-                </h1>
-                <div className="mt-2  md:min-h-[260px]">
-                  {zaid.map((feature) => (
-                    <div
-                      key={feature.name}
-                      className="relative text-[14px] md:text-[16px] leading-7"
-                    >
-                      <dt className="inline text-emerald-500 font-medium">
-                        {feature.name} :
-                      </dt>{" "}
-                      <dd className="inline">{feature.description}</dd>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-2 mt-6">
-                  <Link
-                    to="https://www.commodityinsightsx.com/commodities/cereals"
-                    target="_blank"
-                    className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
-                  >
-                    विक्रय मूल्य देखें
-                  </Link>
-                  <Link
-                    to="/contact"
-                    className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
-                  >
-                    खरीदने या बेचने के लिए हमसे संपर्क करें
-                  </Link>
-                  <p className="text-[12px] justify-end -mt-2">
-                    *आपको Commodity Insights पर मूल्य सूचना के लिए भेज रहा हूं
-                  </p>
-                </div>
+              <div className="flex flex-col gap-4 mt-6">
+                <Link
+                  to="https://www.commodityinsightsx.com/commodities/cereals"
+                  target="_blank"
+                  className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
+                >
+                  विक्रय मूल्य देखें
+                </Link>
+                <Link
+                  to="/contact"
+                  className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
+                >
+                  खरीदने या बेचने के लिए हमसे संपर्क करें
+                </Link>
+                <p className="text-[12px] justify-end -mt-2">
+                  *आपको Commodity Insights पर मूल्य सूचना के लिए भेज रहा हूं
+                </p>
               </div>
             </div>
-            <p className="flex mt-5 ">
-              भारत में ये कृषि मौसम फसल योजना के लिए महत्वपूर्ण हैं और रोटेशन,
-              क्योंकि वे देश की जलवायु परिस्थितियों के साथ संरेखित होते हैं और
-              मानसून पैटर्न। किसान अधिकतम लाभ के लिए इन मौसमों पर भरोसा करते हैं
-              फसल की पैदावार और आबादी के लिए खाद्य सुरक्षा सुनिश्चित करना।
-            </p>
+            <div className="p-5 rounded-xl hover:bg-emerald-50 bg-gray-50">
+              <h1 className="text-xl font-semibold text-emerald-500 border-b pb-2">
+                रबी फसल
+              </h1>
+              <div className="mt-2  md:min-h-[260px]">
+                {rabi.map((feature) => (
+                  <div
+                    key={feature.name}
+                    className="relative text-[14px] md:text-[16px] leading-7"
+                  >
+                    <dt className="inline text-emerald-500 font-medium">
+                      {feature.name} :
+                    </dt>{" "}
+                    <dd className="inline">{feature.description}</dd>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4 mt-6">
+                <Link
+                  to="https://www.commodityinsightsx.com/commodities/cereals"
+                  target="_blank"
+                  className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
+                >
+                  विक्रय मूल्य देखें
+                </Link>
+                <Link
+                  to="/contact"
+                  className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
+                >
+                  खरीदने या बेचने के लिए हमसे संपर्क करें
+                </Link>
+                <p className="text-[12px] justify-end -mt-2">
+                  *आपको Commodity Insights पर मूल्य सूचना के लिए भेज रहा हूं
+                </p>
+              </div>
+            </div>
+            <div className="p-5 rounded-xl hover:bg-emerald-50 bg-gray-50">
+              <h1 className="text-xl font-semibold text-emerald-500 border-b pb-2">
+                ज़ैद फसल
+              </h1>
+              <div className="mt-2  md:min-h-[260px]">
+                {zaid.map((feature) => (
+                  <div
+                    key={feature.name}
+                    className="relative text-[14px] md:text-[16px] leading-7"
+                  >
+                    <dt className="inline text-emerald-500 font-medium">
+                      {feature.name} :
+                    </dt>{" "}
+                    <dd className="inline">{feature.description}</dd>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4 mt-6">
+                <Link
+                  to="https://www.commodityinsightsx.com/commodities/cereals"
+                  target="_blank"
+                  className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
+                >
+                  विक्रय मूल्य देखें
+                </Link>
+                <Link
+                  to="/contact"
+                  className="flex w-full items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
+                >
+                  खरीदने या बेचने के लिए हमसे संपर्क करें
+                </Link>
+                <p className="text-[12px] justify-end -mt-2">
+                  *आपको Commodity Insights पर मूल्य सूचना के लिए भेज रहा हूं
+                </p>
+              </div>
+            </div>
           </div>
+          <p className="flex mt-5 ">
+            भारत में ये कृषि मौसम फसल योजना के लिए महत्वपूर्ण हैं और रोटेशन,
+            क्योंकि वे देश की जलवायु परिस्थितियों के साथ संरेखित होते हैं और
+            मानसून पैटर्न। किसान अधिकतम लाभ के लिए इन मौसमों पर भरोसा करते हैं
+            फसल की पैदावार और आबादी के लिए खाद्य सुरक्षा सुनिश्चित करना।
+          </p>
         </div>
       </div>
-
-      {/* {JSON.stringify(categories,null,4)} */}
-      {/* {JSON.stringify(rabiC,null,4)}
-     {JSON.stringify(kharifC,null,4)}
-     {JSON.stringify(zaidC,null,4)} */}
-      {/* {JSON.stringify(rabiId,null,4) } */}
-      {/* {JSON.stringify(rabi,null,4)} */}
-      {/* {JSON.stringify(rabiCrops,null,4)} */}
-      {/* {JSON.stringify(c,null,4)} */}
-      {/* {JSON.stringify(rabiCrops,null,4)} */}
     </Layout>
   );
 };

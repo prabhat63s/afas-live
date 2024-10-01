@@ -7,11 +7,11 @@ export default function Fertilizer() {
   return (
     <Layout>
       <div className="w-[100%]">
-        <div className="w-[90%] my-10 mx-auto">
-          <h1 className="text-2xl w-fit text-emerald-500 font-bold mb-6 border-b-4">
-            उर्वरक
-          </h1>
-          <div className=" space-y-5">
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
+          <div className="pb-6 mb-10 border-b">
+            <h1 className="text-2xl text-emerald-500 font-semibold mb-2">
+              उर्वरक
+            </h1>
             <p className="flex">
               उर्वरक वे पदार्थ हैं जो मिट्टी या पौधों को उपलब्ध कराने के लिए
               डाले जाते हैं आवश्यक पोषक तत्व जिनकी मिट्टी में कमी हो सकती है या
@@ -21,12 +21,13 @@ export default function Fertilizer() {
               सामग्री के आधार पर वर्गीकृत किया गया है स्रोत। ये दो प्रकार के
               उर्वरक हैं:
             </p>
-
+          </div>
+          <div className=" space-y-5">
             <h1 className="font-medium text-lg text-emerald-500">
               1. जैविक खाद:
             </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   स्रोत:
@@ -36,7 +37,7 @@ export default function Fertilizer() {
                   खाद, खाद, हड्डी का भोजन, और पौधे अवशेष.
                 </p>
               </p>
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   पोषक तत्व रिलीज:
@@ -47,7 +48,7 @@ export default function Fertilizer() {
                   स्थिर आपूर्ति।
                 </p>
               </p>
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   मृदा स्वास्थ्य:
@@ -58,7 +59,7 @@ export default function Fertilizer() {
                   और समय के साथ प्रजनन क्षमता।
                 </p>
               </p>
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   पर्यावरण संबंधी विचार:
@@ -74,13 +75,13 @@ export default function Fertilizer() {
             <div className="flex flex-col md:flex-row gap-4 mt-6 ">
               <Link
                 to="/organic-fertilizer"
-                className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md  text-white hover:bg-emerald-400"
+                className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
               >
                 जैविक खाद कैसे बनाये
               </Link>
               <Link
                 to="/contact"
-                className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md  text-white hover:bg-emerald-400"
+                className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
               >
                 जैविक खाद खरीदने या बेचेंने लेंने के लिए हमसे संपर्क करें
               </Link>
@@ -89,8 +90,8 @@ export default function Fertilizer() {
             <h1 className="font-medium text-lg text-emerald-500">
               2. रासायनिक (सिंथेटिक) उर्वरक:
             </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   स्रोत:
@@ -101,7 +102,7 @@ export default function Fertilizer() {
                   सामग्री.
                 </p>
               </p>
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   पोषक तत्व रिलीज:
@@ -112,7 +113,7 @@ export default function Fertilizer() {
                   होती हैं।
                 </p>
               </p>
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   सटीक पोषक तत्व:
@@ -123,7 +124,7 @@ export default function Fertilizer() {
                   (नाइट्रोजन-फास्फोरस-पोटेशियम)।
                 </p>
               </p>
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   समान संरचना:
@@ -133,7 +134,7 @@ export default function Fertilizer() {
                   प्रबंधन को सरल बनाता है।
                 </p>
               </p>
-              <p className="bg-gray-50 p-5 rounded-md hover:shadow-md">
+              <p className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="flex items-center font-medium text-emerald-500">
                   <BsDot size={28} />
                   पर्यावरण संबंधी विचार:
@@ -150,7 +151,7 @@ export default function Fertilizer() {
           <div className="flex flex-col md:flex-row gap-4 mt-6 ">
             <Link
               to="/contact"
-              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md  text-white hover:bg-emerald-400"
+              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
             >
               रासायनिक खाद खरीदने लेंने के लिए हमसे संपर्क करें
             </Link>

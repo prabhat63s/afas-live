@@ -47,14 +47,12 @@ export default function Chatbot() {
       // Add any additional logic here for handling the send action without modifying the input
     }
 
-    // Logic for displaying the result, if applicable
-    // setShowResult(true);
   };
 
   return (
     <div className="fixed bottom-4 right-5 z-50">
       {isOpen ? (
-        <div className="bg-white rounded-md p-4 w-96 shadow-lg max-h-[30rem] overflow-y-auto">
+        <div className="bg-white rounded-md p-4 w-96 shadow-xl max-h-[30rem] overflow-y-auto">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold text-emerald-500">
               ग्रीनी एआई
@@ -65,7 +63,7 @@ export default function Chatbot() {
           </div>
 
           {!showResult ? (
-            <div className="mb-4">
+            <div className="mb-4 ">
               <p className="text-sm text-gray-800">
                 आपकी कैसे सहायता कर सकता हूँ?
               </p>
@@ -78,7 +76,7 @@ export default function Chatbot() {
 
           <div className="mb-4">
             {loading ? (
-              <div className="h-16 bg-emerald-50 animate-pulse"></div>
+              <div className=" bg-emerald-50 animate-pulse"></div>
             ) : (
               <p
                 className="text-sm text-gray-800"
@@ -102,14 +100,6 @@ export default function Chatbot() {
               >
                 <MdOutlineUndo size={24} />
               </button>
-              {/* <button
-                onClick={handleListen}
-                className={`hover:bg-gray-200 rounded-full p-2 ${
-                  listening ? "bg-red-200" : ""
-                }`}
-              >
-                <BiSolidMicrophone size={24} />
-              </button> */}
               <button
                 className={`${
                   input

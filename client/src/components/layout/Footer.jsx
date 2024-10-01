@@ -6,77 +6,88 @@ import logo from "../../assets/favicon.png";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="z-50 py-10 flex flex-col bg-[#1e1e1e] shadow-lg text-white">
-      <div className="w-[90%] lg:w-[85%] flex flex-col lg:flex-row gap-8 lg:gap-12 mx-auto">
-        <div className="flex flex-col space-y-4">
-          <NavLink to="/" className="flex items-center space-x-2">
-            <img className="h-10 w-10" src={logo} alt="Your Company" />
-
-            <h1 className="font-extrabold font-serif flex flex-col text-xl">
-              अपनी फसल{" "}
-              <span className=" text-emerald-500 ml-6 -mt-1.5">
-                अपनी सुरक्षा
-              </span>
-            </h1>
+    <footer className="bg-[#1e1e1e] py-10 text-white">
+      <div className="lg:max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        {/* Logo Section */}
+        <div className="flex flex-col items-start">
+          <NavLink to="/" className="flex items-center gap-1 pb-5">
+            <div className="flex items-center space-x-2">
+              <img className="h-12 w-12" src={logo} alt="Your Company" />
+              <h1 className="font-extrabold font-serif flex flex-col text-xl">
+                अपनी फसल{" "}
+                <span className=" text-emerald-500 ml-6 -mt-1.5">
+                  अपनी सुरक्षा
+                </span>
+              </h1>
+            </div>
           </NavLink>
-
-          <p className="text-sm md:text-base">
-            © {currentYear} <span>अपनी फसल अपनी सुरक्षा</span>
+          <p className="text-sm">
+            © {currentYear} <span>अपनी फसल अपनी सुरक्षा</span>. सर्वाधिकार
+            सुरक्षित।
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row w-full gap-6 lg:gap-12">
-          <div className="flex-1 lg:border-l border-gray-600 lg:pl-12">
-            <h1 className="text-emerald-500 text-lg lg:text-xl">बारे में</h1>
-            {company.map(({ to, title }) => (
-              <NavLink
-                to={to}
-                key={title}
-                className="my-2 flex text-sm md:text-base"
-              >
-                {title}
-              </NavLink>
-            ))}
-          </div>
+        {/* Company Section */}
+        <div className="flex flex-col">
+          <h1 className="text-emerald-500 text-lg lg:text-xl mb-2">बारे में</h1>
+          {company.map(({ to, title }) => (
+            <NavLink
+              to={to}
+              key={title}
+              className="text-sm my-1 hover:text-emerald-500 transition-colors duration-200"
+            >
+              {title}
+            </NavLink>
+          ))}
+        </div>
 
-          <div className="flex-1 lg:border-l border-gray-600 lg:pl-12">
-            <h1 className="text-emerald-500 text-lg lg:text-xl">संपर्क करें</h1>
-            {contact.map(({ to, title }) => (
-              <NavLink
-                to={to}
-                key={title}
-                className="my-2 flex text-sm md:text-base"
-              >
-                {title}
-              </NavLink>
-            ))}
-          </div>
+        {/* Contact Section */}
+        <div className="flex flex-col">
+          <h1 className="text-emerald-500 text-lg lg:text-xl mb-2">
+            संपर्क करें
+          </h1>
+          {contact.map(({ to, title }) => (
+            <NavLink
+              to={to}
+              key={title}
+              className="text-sm my-1 hover:text-emerald-500 transition-colors duration-200"
+            >
+              {title}
+            </NavLink>
+          ))}
+        </div>
 
-          <div className="flex-1 lg:border-l border-gray-600 lg:pl-12">
-            <h1 className="text-emerald-500 text-lg lg:text-xl">कानूनी</h1>
-            {legal.map(({ to, id, title }) => (
-              <NavLink
-                to={to}
-                key={id}
-                id={id}
-                className="my-2 flex text-sm md:text-base"
-              >
-                {title}
-              </NavLink>
-            ))}
-          </div>
+        {/* Legal Section */}
+        <div className="flex flex-col">
+          <h1 className="text-emerald-500 text-lg lg:text-xl mb-2">कानूनी</h1>
+          {legal.map(({ to, id, title }) => (
+            <NavLink
+              to={to}
+              key={id}
+              id={id}
+              className="text-sm my-1 hover:text-emerald-500 transition-colors duration-200"
+            >
+              {title}
+            </NavLink>
+          ))}
+        </div>
 
-          <div className="flex-1 lg:border-l border-gray-600 lg:pl-12">
-            <h1 className="text-emerald-500 text-lg lg:text-xl">
-              हमारे साथ जुड़ें
-            </h1>
-            <div className="flex flex-wrap gap-4">
-              {social.map((s) => (
-                <Link to={s.to} key={s.id} target="_blank" className="text-xl">
-                  {s.title}
-                </Link>
-              ))}
-            </div>
+        {/* Social Media Section */}
+        <div className="flex flex-col">
+          <h1 className="text-emerald-500 text-lg lg:text-xl mb-2">
+            हमारे साथ जुड़ें
+          </h1>
+          <div className="flex gap-4">
+            {social.map((s) => (
+              <Link
+                to={s.to}
+                key={s.id}
+                target="_blank"
+                className="text-xl hover:text-emerald-500 transition-colors duration-200"
+              >
+                {s.title}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

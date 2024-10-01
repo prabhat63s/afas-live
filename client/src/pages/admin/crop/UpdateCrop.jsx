@@ -1,12 +1,11 @@
-
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Select } from "antd";
-import AdminMenu from "../../../components/AdminMenu";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
+import AdminLayout from "../AdminLayout";
 
 const { Option } = Select;
 
@@ -115,19 +114,9 @@ const UpdateCrop = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 lg:flex-row p-5 lg:px-10 h-screen">
-      <div className="lg:w-1/6 w-full">
-        <AdminMenu />
-      </div>
-      <div className="w-full h-full overflow-auto lg:w-5/6">
-        <div className="flex items-center gap-3">
-          <Link to="/dashboard/admin">
-            <IoMdArrowRoundBack size={22} />
-          </Link>
-          <h2 className="text-xl text-emerald-500 font-bold border-b-4">
-          अपडेट
-          </h2>
-        </div>
+    <AdminLayout>
+      <div className="w-full h-full overflow-auto">
+        <h2 className="text-xl font-semibold ">अपडेट</h2>
         <form onSubmit={handleUpdateProduct} className="flex flex-col my-4">
           <Select
             bordered={false}
@@ -157,7 +146,7 @@ const UpdateCrop = () => {
             className="flex justify-center my-4 w-fit rounded-md bg-emerald-500 p-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
             onClick={handleAddDescription}
           >
-           विवरण जोड़ें
+            विवरण जोड़ें
           </button>
           {description.map((desc, i) => (
             <div key={i} className="mb-3 flex flex-col gap-4">
@@ -190,7 +179,7 @@ const UpdateCrop = () => {
               type="submit"
               className="flex justify-center w-fit rounded-md bg-emerald-500 p-2 font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400"
             >
-             अपडेट
+              अपडेट
             </button>
             <button
               type="button"
@@ -202,7 +191,7 @@ const UpdateCrop = () => {
           </div>
         </form>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 

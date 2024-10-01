@@ -37,21 +37,26 @@ export default function Soil() {
   return (
     <Layout>
       <div className="w-[100%]">
-        <div className="w-[90%] my-10  mx-auto">
-          <h1 className="text-2xl w-fit text-emerald-500 font-bold mb-6 border-b-4">
-            मिट्टी की जांच
-          </h1>
-          <div className="flex flex-col space-y-5">
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
+          <div className="pb-6 mb-10 border-b">
+            <h1 className="text-2xl text-emerald-500 font-semibold mb-2">
+              {" "}
+              मिट्टी की जांच
+            </h1>
             <p className="flex items-start justify-start ">
               मिट्टी की जांच (soil testing) एक महत्वपूर्ण प्रक्रिया है जो
               किसानों को उनकी खेत की मिट्टी के गुणवत्ता और पोषण स्तर का
               मूल्यांकन करने में मदद करती है। यह जानने में मदद करती है कि मिट्टी
               में कौन-कौन से पोषक तत्व मौजूद हैं और कितने मात्रा में, जिससे कि
-              उन्हें उचित खादों का चयन करने में मदद मिल सके। मिट्टी के विभिन्न
-              प्रकार हो सकते हैं, जैसे:
+              उन्हें उचित खादों का चयन करने में मदद मिल सके।
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+          </div>
+          <div className="flex flex-col space-y-5">
+            <p className="flex items-start justify-start ">
+              मिट्टी के विभिन्न प्रकार हो सकते हैं, जैसे:
+            </p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   1. लोमड़ी मिट्टी (लूस सॉइल):
                 </span>
@@ -61,7 +66,7 @@ export default function Soil() {
                   जाता है और यहाँ पर पादप विकसित नहीं हो पाते हैं।
                 </p>
               </div>
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   2. मारूदंडी मिट्टी (सैंडी सॉइल):
                 </span>
@@ -71,7 +76,7 @@ export default function Soil() {
                   गन्ना, जूट जैसी फसलें उगाई जाती हैं।
                 </p>
               </div>
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   3. भूरणी मिट्टी (लोम):
                 </span>
@@ -81,7 +86,7 @@ export default function Soil() {
                   की जाती है।
                 </p>
               </div>
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   4. काली मिट्टी (ब्लैक सॉइल):
                 </span>
@@ -91,7 +96,7 @@ export default function Soil() {
                   कपास, जूट, मक्का, गेहूं, तिलहन आदि की खेती की जाती है।
                 </p>
               </div>
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   5. रेगुर मिट्टी (रेड सॉइल):
                 </span>
@@ -112,11 +117,11 @@ export default function Soil() {
             {loading ? (
               <Spinner />
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 {soil.map((s, index) => (
                   <div
                     key={index}
-                    className="bg-gray-50 p-5 rounded-md hover:shadow-md"
+                    className="bg-gray-50 p-5 rounded-xl hover:bg-emerald-50"
                   >
                     <span className="font-medium text-lg text-emerald-500">
                       {index + 1}. {s.name}:
@@ -132,8 +137,8 @@ export default function Soil() {
             <p className="flex mt-5 ">
               फसलों का उत्पादन बढ़ाने के लिए सही उर्वरकों का चयन करना आवश्यक है
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   1. उचित खाद का चयन:
                 </span>
@@ -143,7 +148,7 @@ export default function Soil() {
                   चयन करने में मदद मिलती है।
                 </p>
               </div>
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   2. पोषण की स्तर का नियंत्रण:
                 </span>
@@ -152,7 +157,7 @@ export default function Soil() {
                   तत्वों की कमी हैं और उन्हें कैसे पूरा किया जा सकता है।
                 </p>
               </div>
-              <div className=" bg-gray-50 p-5 rounded-md  hover:shadow-md">
+              <div className=" bg-gray-50 p-5 rounded-xl hover:bg-emerald-50">
                 <span className="font-medium text-lg text-emerald-500">
                   3. उचित जल नियंत्रण:
                 </span>
@@ -167,7 +172,7 @@ export default function Soil() {
           <div className="flex flex-col md:flex-row gap-4 mt-6 ">
             <Link
               to="/contact"
-              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 shadow-md text-white hover:bg-emerald-400"
+              className="flex items-center rounded-md bg-emerald-500 px-3.5 py-2.5 text-white hover:bg-emerald-400"
             >
               मिट्टी की गुणवत्ता का परीक्षण करने के लिए हमसे संपर्क करें
             </Link>

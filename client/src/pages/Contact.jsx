@@ -33,7 +33,7 @@ const Contact = () => {
   return (
     <Layout>
       <div className="h-full md:px-10">
-        <div className=" mx-auto w-[90%] my-16 text-[14px] md:text-[16px]">
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
           <h1 className="text-black text-2xl mb-4 font-bold w-fit border-b-4">
             संपर्क में <span className="text-emerald-500">रहे</span>
           </h1>
@@ -44,7 +44,7 @@ const Contact = () => {
                 {details.map(({ id, icon, title }) => (
                   <div
                     id={id}
-                    className="w-full h-14 rounded-lg flex shadow-sm items-center bg-gray-50 my-6"
+                    className="w-full h-14 rounded-lg flex shadow-sm items-center bg-gray-50 my-8"
                   >
                     <span className="text-emerald-500 mx-3">{icon}</span>
                     {title}

@@ -32,13 +32,29 @@ import AdvEqpAdmin from "./pages/admin/AdvEqpAdmin";
 import NewsAdmin from "./pages/admin/NewsAdmin";
 import Community from "./pages/community/Community";
 import CropDetails from "./pages/infra/crop/CropDetails";
+import RedirectIfAuthenticated from "./routes/RedirectIfAuthenticated";
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/sign-up" element={<Register />} />
-      <Route path="/sign-in" element={<Login />} />
+
+      <Route
+        path="/sign-up"
+        element={
+          <RedirectIfAuthenticated>
+            <Register />
+          </RedirectIfAuthenticated>
+        }
+      />
+      <Route
+        path="/sign-in"
+        element={
+          <RedirectIfAuthenticated>
+            <Login />
+          </RedirectIfAuthenticated>
+        }
+      />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
@@ -58,30 +74,29 @@ export default function App() {
       {/* user */}
       <Route path="/dashboard" element={<Private />}>
         <Route path="community" element={<Community />} />
-
       </Route>
       {/* admin  */}
       <Route path="/dashboard" element={<AdminRoute />}>
         <Route path="admin" element={<AdminDash />} />
         {/* crops */}
-        <Route path="admin/createCategory" element={<CreateCategory />} />
-        <Route path="admin/createCrop" element={<CreateCrop />} />
-        <Route path="admin/crops" element={<Crops />} />
-        <Route path="admin/crops/updateCrop/:slug" element={<UpdateCrop />} />
+        <Route path="createCategory" element={<CreateCategory />} />
+        <Route path="createCrop" element={<CreateCrop />} />
+        <Route path="crops" element={<Crops />} />
+        <Route path="crops/updateCrop/:slug" element={<UpdateCrop />} />
         {/* news */}
-        <Route path="admin/news" element={<NewsAdmin />} />
+        <Route path="news" element={<NewsAdmin />} />
         {/* organicFerti */}
-        <Route path="admin/organicFerti" element={<OrganicFertiAdmin />} />
+        <Route path="organicFerti" element={<OrganicFertiAdmin />} />
         {/* greenhouse */}
-        <Route path="admin/greenhouse" element={<GreenHouseAdmin />} />
+        <Route path="greenhouse" element={<GreenHouseAdmin />} />
         {/* stubble */}
-        <Route path="admin/stubble" element={<StubbleAdmin />} />
+        <Route path="stubble" element={<StubbleAdmin />} />
         {/* seed */}
-        <Route path="admin/seed-store" element={<SeedAdmin />} />
+        <Route path="seed-store" element={<SeedAdmin />} />
         {/* soil */}
-        <Route path="admin/soil-testing" element={<SoilAdmin />} />
+        <Route path="soil-testing" element={<SoilAdmin />} />
         {/* Advance eqp */}
-        <Route path="admin/advance-eqp" element={<AdvEqpAdmin />} />
+        <Route path="advance-eqp" element={<AdvEqpAdmin />} />
       </Route>
 
       <Route path="*" element={<PageNotFound />} />

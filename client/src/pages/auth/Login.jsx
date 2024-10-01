@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { validateEmail, validatePassword } from "../../utils/helper";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { useAuth } from "../../context/auth";
-import Layout from "../../components/layout/Layout";
+import AuthLayout from "./AuthLayout";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -64,98 +64,104 @@ export default function Login() {
   };
 
   return (
-    <Layout>
-      <div className="w-full py-20 flex flex-col lg:flex-row gap-20 px-6 items-center justify-center">
-        <div className="lg:w-[40%] w-full hidden lg:flex items-center justify-center">
-          <img
-            src="https://img.freepik.com/free-vector/organic-farming-concept_23-2148421518.jpg?size=626&ext=jpg&ga=GA1.1.1064716352.1714105038&semt=ais"
-            alt=""
-            className="w-60 lg:w-full"
-          />
-        </div>
-
-        <div className="w-full space-y-4 max-w-md">
-          <h5 className="text-2xl font-bold text-emerald-500">
-            हमारे प्लेटफ़ॉर्म पर साइन इन करें
-          </h5>
-          <p className="text-sm">
-            अपने ईमेल से सैन इन करें या एक अकाउंट बनाएं|
-          </p>
-          <form className="space-y-6 w-full mt-5" onSubmit={handleSubmit}>
-            <div className="mt-2">
-              <label htmlFor="email" className="block mb-2  text-gray-900">
-                अपना ईमेल दर्ज करें
+    <AuthLayout>
+      <div className="w-full pb-10 mb-10 border-b">
+        <h1 className="text-2xl font-semibold mb-2">आपका फिर से स्वागत है।</h1>
+        <p>अपने ईमेल से सैन इन करें या एक खाता बनाएं|</p>
+      </div>
+      <div className="w-full lg:min-h-[50vh] flex flex-col lg:flex-row gap-10 lg:divide-x">
+        <div className="w-full lg:w-[50%] h-full flex items-center justify-center">
+          <form
+            className="flex flex-col space-y-6 w-full"
+            onSubmit={handleSubmit}
+          >
+            <h1 className="text-xl font-semibold mb-2">लॉग इन</h1>
+            <div>
+              <label
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                आपका ईमेल
               </label>
               <input
-                name="email"
                 type="email"
-                autoComplete="email"
+                name="email"
+                id="email"
+                className="border text-sm rounded-lg block w-full p-3"
+                placeholder="name@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="name@gmail.com"
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
               />
+              {error && (
+                <div className="text-emerald-600 pt-2 text-xs">{error}</div>
+              )}
             </div>
-            <div className="">
-              <div className="flex  justify-between">
-                <label htmlFor="email" className="block mb-2 text-gray-900">
-                  अपना पासवर्ड भरें
-                </label>
-                <Link
-                  to="/forgot-password"
-                  className="block mb-2 text-emerald-500"
-                >
-                  पासवर्ड भूल गए
-                </Link>
-              </div>
-              <div className="flex items-center text-gray-900 py-3 px-2 shadow-sm placeholder:text-gray-400  bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
+            <div>
+              <label
+                htmlFor="password"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                आपका पासवर्ड
+              </label>
+              <div className="flex items-center text-gray-900 p-3 border rounded-lg w-full">
                 <input
-                  name="password"
                   type={isShowPassword ? "text" : "password"}
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  id="password"
                   placeholder="••••••••"
                   className="w-full outline-none bg-transparent"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 {isShowPassword ? (
                   <IoEyeOutline
                     size={18}
-                    onClick={() => toggleShowPassword()}
-                    className="text-neutral-600"
+                    onClick={toggleShowPassword}
+                    className="text-neutral-600 cursor-pointer"
                   />
                 ) : (
                   <IoEyeOffOutline
                     size={18}
-                    onClick={() => toggleShowPassword()}
-                    className="text-neutral-600"
+                    onClick={toggleShowPassword}
+                    className="text-neutral-600 cursor-pointer"
                   />
                 )}
               </div>
+              {error && (
+                <div className="text-emerald-600 pt-2 text-xs">{error}</div>
+              )}
             </div>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="flex w-full  justify-center rounded-md bg-emerald-500 py-3  text-white shadow-sm hover:bg-emerald-400"
-              >
-                अपने अकाउंट में साइन इन करें
-              </button>
-            </div>
-          </form>
-
-          <p className="mt-5 text-center text-sm text-gray-500">
-            पंजीकृत नहीं है?
             <Link
-              to="/sign-up"
-              className="font-semibold leading-6 text-emerald-500 hover:text-emerald-400"
+              to="/forgot-password"
+              className="text-emerald-600 text-sm hover:text-black"
             >
-              अकाउंट बनाएं
+              पासवर्ड भूल गए?
             </Link>
-          </p>
+            <button
+              type="submit"
+              className="w-fit text-white bg-emerald-600 hover:bg-emerald-500 gap-2 font-medium rounded-lg px-5 py-2.5 text-center shadow-lg"
+            >
+              लॉग इन
+            </button>
+          </form>
+        </div>
+
+        <div className="w-full lg:w-[50%] lg:pl-10 h-full flex items-center justify-center">
+          <div className="space-y-6 w-full flex flex-col gap-2">
+            <h1 className="text-xl font-semibold">नये ग्राहक</h1>
+            <p>
+              हमारे नए ग्राहकों के बढ़ते परिवार का हिस्सा बनें! आज ही हमसे
+              जुड़ें और विशेष लाभों, ऑफ़र और व्यक्तिगत अनुभवों की दुनिया को
+              अनलॉक करें।
+            </p>
+            <Link to="/sign-up">
+              <button className="w-fit text-white bg-emerald-600 hover:bg-emerald-500 gap-2 font-medium rounded-lg px-5 py-2.5 text-center shadow-lg">
+                साइन अप
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
-    </Layout>
+    </AuthLayout>
   );
 }

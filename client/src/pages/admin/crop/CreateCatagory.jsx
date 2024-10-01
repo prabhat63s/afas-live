@@ -4,10 +4,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Modal } from "antd";
 import CataegoryForm from "../../../components/CataegoryForm";
-import AdminMenu from "../../../components/AdminMenu";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
+import AdminLayout from "../AdminLayout";
 
 const CreateCatagory = () => {
   const [categories, setCategories] = useState([]);
@@ -91,20 +91,11 @@ const CreateCatagory = () => {
   };
   return (
     <>
-      <div className="w-[100%] flex flex-col gap-6 lg:flex-row p-5 lg:px-10 h-screen">
-        <div className="lg:w-1/6 w-full ">
-          <AdminMenu />
-        </div>
-        <div className="w-full flex flex-col lg:w-5/6">
-          <div className="flex gap-3 items-center">
-            <Link to="/dashboard/admin">
-              <IoMdArrowRoundBack size={22} />
-            </Link>
-            <h2 className="text-xl text-emerald-500 font-bold border-b-4 w-fit">
-            फसल श्रेणी जोड़ें
-            </h2>
-          </div>
-          <div className="flex flex-col space-y-2">
+      <AdminLayout>
+        <div className="">
+          <h1 className="text-2xl font-semibold mb-6">फसल श्रेणी जोड़ें</h1>
+
+          <div className="w-full flex flex-col">
             <div className="mt-4">
               <CataegoryForm
                 handleSubmit={handleSubmit}
@@ -113,60 +104,121 @@ const CreateCatagory = () => {
                 actions="श्रेणी दर्ज करें"
               />
             </div>
+            <div className="border mt-5 lg: overflow-auto rounded-md">
+              <table className="w-[100%] mb-2 text-[14px]">
+                <thead className=" font-medium rounded-md bg-gray-50 border-b">
+                  <tr className="flex justify-between">
+                    <th className="px-6 py-4">श्रेणी नाम</th>
+                    <th className="px-6 py-4">कार्रवाई</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {categories.map((cat) => (
+                    <tr
+                      key={cat.name}
+                      className="flex justify-between border-b hover:bg-gray-50"
+                    >
+                      <td className="px-6 py-4"> {cat.name} </td>
+                      <td className="flex space-x-2 px-4 py-4">
+                        <button
+                          title="Delete"
+                          onClick={() => {
+                            window.confirm("Are you sure to delete?") &&
+                              handleDelete(cat._id);
+                          }}
+                          className="hover:text-red-400"
+                        >
+                          <MdOutlineDelete size={24} />
+                        </button>
+                        <button
+                          title="Edit"
+                          className="hover:text-emerald-400"
+                          onClick={() => {
+                            setVisible(true);
+                            setUpdatedName(cat.name);
+                            setSelected(cat);
+                          }}
+                        >
+                          <MdOutlineEdit size={24} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="border mt-5 lg:h-[100vh] overflow-auto rounded-md">
-            <table className="w-[100%] mb-2 text-[14px]">
-              <thead className=" font-medium rounded-md bg-gray-50 border-b">
-                <tr className="flex justify-between">
-                  <th className="px-6 py-4">श्रेणी नाम</th>
-                  <th className="px-6 py-4">कार्रवाई</th>
+          <Modal
+            onCancel={() => setVisible(false)}
+            footer={null}
+            open={visible}
+          >
+            <CataegoryForm
+              value={updatedName}
+              setValue={setUpdatedName}
+              handleSubmit={handleUpdate}
+              actions="अपडेट"
+            />
+          </Modal>
+
+          <div className="overflow-x-auto">
+            <table className="w-full divide-y divide-gray-200">
+              <thead className="bg-white">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Id
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Role
+                  </th>
                 </tr>
               </thead>
-              <tbody>
-                {categories.map((cat) => (
-                  <tr
-                    key={cat.name}
-                    className="flex justify-between border-b hover:bg-gray-50"
-                  >
-                    <td className="px-6 py-4"> {cat.name} </td>
-                    <td className="flex space-x-2 px-4 py-4">
-                      <button
-                        title="Delete"
-                        onClick={() => {
-                          window.confirm("Are you sure to delete?") &&
-                            handleDelete(cat._id);
-                        }}
-                        className="hover:text-red-400"
-                      >
-                        <MdOutlineDelete size={24} />
-                      </button>
-                      <button
-                        title="Edit"
-                        className="hover:text-emerald-400"
-                        onClick={() => {
-                          setVisible(true);
-                          setUpdatedName(cat.name);
-                          setSelected(cat);
-                        }}
-                      >
-                        <MdOutlineEdit size={24} />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+              {/* <tbody className="bg-white divide-y divide-gray-200">
+                  {currentUsers.map((user) => (
+                    <tr key={user._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {user._id}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {user.name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {user.email}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {user.role === 1 ? "Admin" : "User"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody> */}
             </table>
           </div>
+
+          {/* Pagination Controls */}
+          <div className="mt-4 flex justify-between items-center">
+            <button
+              // onClick={() => handlePageChange(currentPage - 1)}
+              // disabled={currentPage === 1}
+              className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-white rounded"
+            >
+              Previous
+            </button>
+            <button
+              // onClick={() => handlePageChange(currentPage + 1)}
+              // disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-white rounded"
+            >
+              Next
+            </button>
+          </div>
         </div>
-        <Modal onCancel={() => setVisible(false)} footer={null} open={visible}>
-          <CataegoryForm
-            value={updatedName}
-            setValue={setUpdatedName}
-            handleSubmit={handleUpdate}
-            actions="अपडेट"
-          />
-        </Modal>
-      </div>
+      </AdminLayout>
     </>
   );
 };

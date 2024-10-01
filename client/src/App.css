@@ -7,7 +7,7 @@ body {
 
 /* For WebKit (Chrome, Safari, newer versions of Opera) */
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 10px;
   height: 0px;
 }
 
@@ -17,27 +17,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #10b981;
-}
-
-.spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #000000;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .marque-container {

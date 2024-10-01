@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import AdminMenu from "../../components/AdminMenu";
 import { MdOutlineDelete } from "react-icons/md";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
+import AdminLayout from "./AdminLayout";
 
 export default function NewsAdmin() {
   const [news, setNews] = useState([]);
@@ -79,19 +79,9 @@ export default function NewsAdmin() {
   };
 
   return (
-    <div className="w-full flex flex-col gap-6 overflow-auto lg:flex-row p-5 lg:px-10 h-screen">
-      <div className="lg:w-1/6 w-full">
-        <AdminMenu />
-      </div>
-      <div className="w-full flex flex-col h-full overflow-auto lg:w-5/6">
-        <div className="flex gap-3 items-center">
-          <Link to="/dashboard/admin">
-            <IoMdArrowRoundBack size={22} />
-          </Link>
-          <h2 className="text-xl text-emerald-500 font-bold border-b-4 w-fit">
-          समाचार
-          </h2>
-        </div>
+    <AdminLayout>
+      <div>
+        <h1 className="text-2xl font-semibold mb-6"> समाचार</h1>
         <form className="mt-4 flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -121,26 +111,25 @@ export default function NewsAdmin() {
             जोड़ें
           </button>
         </form>
-
-        <div className="overflow-x-auto mt-5  rounded-md border">
-          <table className="min-w-full divide-y">
-            <thead className="bg-gray-50">
+        <div className="my-8 overflow-x-auto">
+          <table className="w-full divide-y divide-gray-200">
+            <thead className="bg-white">
               <tr>
                 <th className="px-6 py-3 text-left text-sm font-medium">
-                फ़ोटो
+                  फ़ोटो
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-medium">
-                शीर्षक
+                  शीर्षक
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-medium">
-                विवरण	
+                  विवरण
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-medium">
-                कार्रवाई
+                  कार्रवाई
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y ">
+            <tbody className="bg-white divide-y divide-gray-200">
               {news.map((n) => (
                 <tr key={n._id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -154,7 +143,7 @@ export default function NewsAdmin() {
                     <div className="text-sm font-medium">{n.name}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium">{n.description}</div>
+                    <div className="text-sm font-medium truncate w-60">{n.description}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
                     <div className="flex items-center gap-4">
@@ -178,6 +167,6 @@ export default function NewsAdmin() {
           </table>
         </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 }

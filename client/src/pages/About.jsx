@@ -51,7 +51,7 @@ const About = () => {
     <Layout>
       <div className="w-[100%]">
         {/* our Objective  */}
-        <div className="w-[90%] flex flex-col mt-10 mx-auto md:justify-between">
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
           <h1 className="text-xl text-emerald-500 font-bold mb-4 border-b-4 w-fit">
             उद्देश्य
           </h1>
@@ -60,7 +60,7 @@ const About = () => {
               <p
                 id={id}
                 key={id}
-                className="text-base lg:text-sm flex items-start leading-7"
+                className="flex items-start leading-7"
               >
                 <span className="text-emerald-500">
                   <BsDot size={30} />{" "}
@@ -72,7 +72,7 @@ const About = () => {
         </div>
 
         {/* our mission & vision  */}
-        <div className="w-[90%] flex flex-col my-10 mx-auto md:justify-between">
+        <div className="lg:max-w-7xl mx-auto my-10 px-4">
           <h1 className="text-xl text-emerald-500 font-bold mb-4 border-b-4 w-fit">
             मिशन और द्रष्टिकोण
           </h1>
@@ -81,7 +81,7 @@ const About = () => {
               <p
                 id={id}
                 key={id}
-                className="text-base lg:text-sm flex justify-start py-1 leading-7"
+                className=" flex justify-start py-1 leading-7"
               >
                 <span className="text-emerald-500">
                   <BsDot size={30} />{" "}

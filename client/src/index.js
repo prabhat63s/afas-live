@@ -16,7 +16,7 @@ root.render(
       <AuthProvider>
         <BrowserRouter>
           <App />
-          <Toaster position="top-right" />
+          <Toaster position="top-center" />
         </BrowserRouter>
       </AuthProvider>
     </ContextProvider>

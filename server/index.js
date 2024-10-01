@@ -58,19 +58,61 @@ app.use("/api/v1/seed", seedRoute);
 app.use("/api/v1/soil", soilRoute);
 app.use("/api/v1/posts", postRoute);
 
-app.get("/weather", async (req, res) => {
-  const { lat, lon } = req.query;
-  const apiKey = process.env.WEATHER_API_KEY;
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+app.get("/api/v1/weather/:city", async (req, res) => {
+  const API_KEY = process.env.WEATHER_API_KEY;
+  const city = req.params.city;
+
+  if (!API_KEY) {
+    return res
+      .status(500)
+      .json({ error: "API key is missing from environment variables" });
+  }
 
   try {
-    const response = await axios.get(apiUrl);
+    const response = await axios.get(
+      `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
+    );
     res.json(response.data);
   } catch (error) {
-    console.error("Error fetching weather data:", error);
-    res.status(500).json({ error: "Failed to fetch weather data" });
+    console.error(error);
+
+    if (error.response && error.response.status === 400) {
+      res
+        .status(400)
+        .json({ error: "City not found. Please try a different city." });
+    } else {
+      res
+        .status(500)
+        .json({
+          error: "Failed to fetch weather data. Please try again later.",
+        });
+    }
   }
 });
+
+app.get("/api/v1/forecast", async (req, res) => {
+  const API_KEY = process.env.WEATHER_API_KEY;
+  const { lat, lon } = req.query;
+
+  if (!API_KEY) {
+    return res.status(500).json({ error: "API key is missing from environment variables" });
+  }
+
+  try {
+    const response = await axios.get(
+      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${lat},${lon}&days=7`
+    );
+    res.json(response.data.forecast.forecastday);
+  } catch (error) {
+    console.error(error);
+    if (error.response && error.response.status === 400) {
+      res.status(400).json({ error: "Invalid coordinates. Please provide valid latitude and longitude." });
+    } else {
+      res.status(500).json({ error: "Failed to fetch forecast data. Please try again later." });
+    }
+  }
+});
+
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 app.get("*", (req, res) => {
